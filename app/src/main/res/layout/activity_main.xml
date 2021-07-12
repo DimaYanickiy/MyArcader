@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:fontFamily="@font/comfortaa"
+        android:gravity="center"
+        android:text="@string/SpinThis"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:translationY="20dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <ImageButton
+            android:id="@+id/spin"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/cardview_shadow_end_color"
+            android:translationY="20dp"
+            app:srcCompat="@drawable/but" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:fontFamily="@font/comfortaa"
+            android:gravity="center"
+            android:text="@string/btnStart"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:translationY="20dp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:translationY="300dp">
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/cardview_shadow_end_color"
+            android:translationY="20dp"
+            app:srcCompat="@drawable/but" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:fontFamily="@font/comfortaa"
+            android:gravity="center"
+            android:text="@string/btnExit"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:translationY="20dp" />
+    </FrameLayout>
+
+</LinearLayout>
