@@ -12,6 +12,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:contentDescription="spinthis"
         android:fontFamily="@font/comfortaa"
         android:gravity="center"
         android:text="@string/SpinThis"
@@ -29,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="@color/cardview_shadow_end_color"
+            android:contentDescription="btn_start_game"
             android:translationY="20dp"
             app:srcCompat="@drawable/but" />
 
@@ -55,6 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="@color/cardview_shadow_end_color"
+            android:contentDescription="btn_exit_game"
             android:translationY="20dp"
             app:srcCompat="@drawable/but" />
 

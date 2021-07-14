@@ -21,6 +21,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:contentDescription="app_name_spin"
                 android:fontFamily="@font/comfortaa"
                 android:gravity="center"
                 android:text="@string/SpinThis"
@@ -32,6 +33,7 @@
                 android:id="@+id/tokens"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="tok"
                 android:fontFamily="@font/comfortaa"
                 android:gravity="center_vertical|end"
                 android:paddingRight="5dp"
@@ -185,6 +187,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@color/cardview_shadow_end_color"
+                android:contentDescription="btn_spin"
                 android:translationY="20dp"
                 app:srcCompat="@drawable/but" />
 
@@ -210,6 +213,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@color/cardview_shadow_end_color"
+                android:contentDescription="btn_spin_5"
                 android:translationY="20dp"
                 app:srcCompat="@drawable/but" />
 
@@ -236,6 +240,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@color/cardview_shadow_end_color"
+                android:contentDescription="back"
                 android:translationY="20dp"
                 app:srcCompat="@drawable/but" />
 

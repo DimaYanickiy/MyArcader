@@ -1,4 +1,4 @@
-package com.spinner.spinthis;
+package com.spiner.spinthis;
 
 import android.content.Context;
 import android.content.SharedPreferences;

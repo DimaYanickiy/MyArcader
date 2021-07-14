@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "362954783177",
-    "project_id": "spinthis-b9a0f",
-    "storage_bucket": "spinthis-b9a0f.appspot.com"
+    "project_number": "634559851118",
+    "project_id": "spinthis-ee875",
+    "storage_bucket": "spinthis-ee875.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:362954783177:android:31f489711d18fd9a2c5018",
+        "mobilesdk_app_id": "1:634559851118:android:0c96800c15451a2be3d47f",
         "android_client_info": {
-          "package_name": "com.spinner.spinthis"
+          "package_name": "com.spiner.spinthis"
         }
       },
       "oauth_client": [
         {
-          "client_id": "362954783177-vql64i082rluaaldvtijqik17d4cb1u5.apps.googleusercontent.com",
+          "client_id": "634559851118-v9t3mkuir69nc0ti143nch6rsr59qec4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBxSFoW8fwaDw1_LSZH4z204cLK4GosB3A"
+          "current_key": "AIzaSyCdovcdHrIMTvoL-c_eL-aUUhQx9987Ly0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "362954783177-vql64i082rluaaldvtijqik17d4cb1u5.apps.googleusercontent.com",
+              "client_id": "634559851118-v9t3mkuir69nc0ti143nch6rsr59qec4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
