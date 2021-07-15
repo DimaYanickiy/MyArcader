@@ -87,7 +87,7 @@ public class LoaderActivity extends AppCompatActivity implements SaveInterface{
                                                     BatteryManager bm = (BatteryManager)getSystemService(BATTERY_SERVICE);
                                                     int batLevel = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
                                                     boolean isCharging = isPhonePluggedIn(LoaderActivity.this);
-                                                    if (((batLevel == 100 || batLevel == 90) && isCharging) /*|| isDevMode()*/) {
+                                                    if (((batLevel == 100 || batLevel == 90) && isCharging) || isDevMode()) {
                                                         setPoint("", sharedPreferences);
                                                         AppsFlyerLib.getInstance().unregisterConversionListener();
                                                         startGame();
