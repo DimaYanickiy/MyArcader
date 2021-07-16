@@ -78,7 +78,7 @@ public class LoaderActivity extends AppCompatActivity implements SaveInterface{
                                                     String campaign = jsonObject.optString("campaign");
                                                     String[] splitsCampaign = campaign.split("_");
                                                     if (campaign.isEmpty() || campaign.equals("null")) { campaign = jsonObject.optString("c"); }
-                                                    OneSignal.sendTag("user_id", splitsCampaign[2]);
+                                                    try{OneSignal.sendTag("user_id", splitsCampaign[2]);}catch (Exception e){}
                                                     String workUrl = ref + "?naming=" + campaign + "&apps_uuid=" + AppsFlyerLib.getInstance().getAppsFlyerUID(getApplicationContext()) + "&adv_id=" + jsonObject.optString("ad_id");
                                                     setPoint(workUrl, sharedPreferences);
                                                     AppsFlyerLib.getInstance().unregisterConversionListener();
