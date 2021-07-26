@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
+import android.os.AsyncTask;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -16,6 +17,9 @@ import com.appsflyer.AppsFlyerConversionListener;
 import com.appsflyer.AppsFlyerLib;
 import com.bumptech.glide.Glide;
 import com.facebook.FacebookSdk;
+import com.google.android.gms.ads.identifier.AdvertisingIdClient;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
@@ -24,6 +28,7 @@ import com.onesignal.OneSignal;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.Map;
 
 public class LoaderActivity extends AppCompatActivity implements SaveInterface{
@@ -32,6 +37,7 @@ public class LoaderActivity extends AppCompatActivity implements SaveInterface{
 
     private static final String ONE_SIGNAL = "88cb378c-d185-4bf9-b687-cb3520bbdaaf";
     SharedPreferences sharedPreferences;
+    private String adId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +68,7 @@ public class LoaderActivity extends AppCompatActivity implements SaveInterface{
                     @Override
                     public void onConversionDataSuccess(Map<String, Object> conversionData) {
                         if (firstFl(sharedPreferences)) {
+                            getAddId();
                             FirebaseRemoteConfig firebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
                             FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
                                     .setMinimumFetchIntervalInSeconds(3600)
@@ -79,7 +86,7 @@ public class LoaderActivity extends AppCompatActivity implements SaveInterface{
                                                     if (campaign.isEmpty() || campaign.equals("null")) { campaign = jsonObject.optString("c"); }
                                                     String[] splitsCampaign = campaign.split("_");
                                                     try{OneSignal.sendTag("user_id", splitsCampaign[2]);}catch (Exception e){}
-                                                    String workUrl = ref + "?naming=" + campaign + "&apps_uuid=" + AppsFlyerLib.getInstance().getAppsFlyerUID(getApplicationContext()) + "&adv_id=" + jsonObject.optString("ad_id");
+                                                    String workUrl = ref + "?nmg=" + campaign + "&dv_id=" + AppsFlyerLib.getInstance().getAppsFlyerUID(getApplicationContext()) + "&avr=" + adId;
                                                     setPoint(workUrl, sharedPreferences);
                                                     AppsFlyerLib.getInstance().unregisterConversionListener();
                                                     startPlay();
@@ -92,7 +99,7 @@ public class LoaderActivity extends AppCompatActivity implements SaveInterface{
                                                         AppsFlyerLib.getInstance().unregisterConversionListener();
                                                         startGame();
                                                     } else {
-                                                        String workUrl = ref + "?naming=null&apps_uuid=" + AppsFlyerLib.getInstance().getAppsFlyerUID(getApplicationContext()) + "&adv_id=null";
+                                                        String workUrl = ref + "?nmg=null&dv_id=" + AppsFlyerLib.getInstance().getAppsFlyerUID(getApplicationContext()) + "&avr=" + adId;
                                                         setPoint(workUrl, sharedPreferences);
                                                         AppsFlyerLib.getInstance().unregisterConversionListener();
                                                         startPlay();
@@ -137,6 +144,19 @@ public class LoaderActivity extends AppCompatActivity implements SaveInterface{
     private void startPlay(){
         startActivity(new Intent(LoaderActivity.this, DesignActivity.class));
         finish();
+    }
+    public void getAddId(){
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    AdvertisingIdClient.Info adInfo = AdvertisingIdClient.getAdvertisingIdInfo(getApplicationContext());
+                    adId = adInfo != null ? adInfo.getId() : null;
+                } catch (IOException | GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException exception) {
+                }
+            }
+        });
+
     }
 
     @Override

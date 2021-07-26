@@ -17,7 +17,7 @@
         android:theme="@style/Theme.Design.NoActionBar"
         android:networkSecurityConfig="@xml/network_security_config"
         android:requestLegacyExternalStorage="true">
-        <activity android:name="com.spiner.spinthis.LoaderActivity"
+        <activity android:name=".LoaderActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,11 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.spiner.spinthis.Game"
+        <activity android:name=".Game"
             android:screenOrientation="portrait"/>
-        <activity android:name="com.spiner.spinthis.MainActivity"
+        <activity android:name=".MainActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="com.spiner.spinthis.DesignActivity"
+        <activity android:name=".DesignActivity"
             android:windowSoftInputMode="adjustResize"
             android:configChanges="orientation|screenSize">
         </activity>
